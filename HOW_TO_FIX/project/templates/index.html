@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8">
+    <title>Flask React</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- styles -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Flask React</h1>
+      <br>
+      <div id="main"></div>
+    </div>
+    <!-- scripts -->
+    <script src="{{ url_for('static', filename='bower_components/react/react.development.js') }}"></script>
+    <script src="{{ url_for('static', filename='bower_components/react/react-dom.development.js') }}"></script>
+    <script src="{{ url_for('static', filename='bower_components/react/create-react-class.min.js') }}"></script>
+    <!-- <script type="text/javascript" src="{{ url_for('static', filename='scripts/js/main.js') }}"></script> -->
+    <script type="text/jsx" src="{{ url_for('static', filename='scripts/jsx/main.js') }}"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+    <!-- <script type="text/jsx">
+
+      /*** @jsx React.DOM */
+
+      var DynamicSearch = createReactClass({
+
+        // sets initial state
+        getInitialState: function(){
+          return { searchString: '' };
+        },
+      
+        // sets state, triggers render method
+        handleChange: function(event){
+          // grab value form input box
+          this.setState({searchString:event.target.value});
+          console.log("scope updated!");
+        },
+      
+        render: function() {
+      
+          var countries = this.props.items;
+          var searchString = this.state.searchString.trim().toLowerCase();
+      
+          // filter countries list by value from input box
+          if(searchString.length > 0){
+            countries = countries.filter(function(country){
+              return country.name.toLowerCase().match( searchString );
+            });
+          }
+      
+          return (
+            <div>
+              <input type="text" value={this.state.searchString} onChange={this.handleChange} placeholder="Search!" />
+              <ul>
+                { countries.map(function(country){ return <li key={country.name}>{country.name} </li> }) }
+              </ul>
+            </div>
+          )
+        }
+      
+      });
+      
+      // list of countries, defined with JavaScript object literals
+      var countries = [
+        {"name": "Sweden"}, {"name": "China"}, {"name": "Peru"}, {"name": "Czech Republic"},
+        {"name": "Bolivia"}, {"name": "Latvia"}, {"name": "Samoa"}, {"name": "Armenia"},
+        {"name": "Greenland"}, {"name": "Cuba"}, {"name": "Western Sahara"}, {"name": "Ethiopia"},
+        {"name": "Malaysia"}, {"name": "Argentina"}, {"name": "Uganda"}, {"name": "Chile"},
+        {"name": "Aruba"}, {"name": "Japan"}, {"name": "Trinidad and Tobago"}, {"name": "Italy"},
+        {"name": "Campolla"}, {"name": "Iceland"}, {"name": "Dominican Republic"}, {"name": "Turkey"},
+        {"name": "Spain"}, {"name": "Poland"}, {"name": "Haiti"}
+      ];
+      
+      ReactDOM.render(
+        <DynamicSearch items={ countries } />,
+        document.getElementById('main')
+      );
+    </script> -->
+  </body>
+</html>
